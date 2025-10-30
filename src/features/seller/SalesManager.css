@@ -1,0 +1,137 @@
+.sales-manager {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.sale-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.input-group input[type="text"] {
+  flex: 2;
+}
+
+.input-group input[type="number"] {
+  flex: 1;
+}
+
+.input-group button {
+  padding: 0 20px;
+  background: var(--calypso);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sale-items {
+  margin-bottom: 20px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.sale-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  gap: 10px;
+}
+
+.item-code {
+  width: 80px;
+  color: #666;
+}
+
+.item-name {
+  flex: 2;
+}
+
+.item-quantity {
+  width: 50px;
+  text-align: center;
+}
+
+.item-price,
+.item-subtotal {
+  width: 100px;
+  text-align: right;
+}
+
+.remove-item {
+  background: none;
+  border: none;
+  color: #ff4444;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.sale-summary {
+  border-top: 2px solid #eee;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.payment-button {
+  padding: 10px 20px;
+  background: var(--calypso);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.payment-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.payment-methods {
+  display: flex;
+  gap: 10px;
+}
+
+.payment-methods button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.payment-methods button:first-child {
+  background: #4caf50;
+  color: white;
+}
+
+.payment-methods button:nth-child(2) {
+  background: #2196f3;
+  color: white;
+}
+
+.payment-methods button:last-child {
+  background: #f44336;
+  color: white;
+}

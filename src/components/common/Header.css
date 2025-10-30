@@ -1,0 +1,66 @@
+.topbar {
+  height: var(--header-h);
+  background: var(--calypso);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.topbar-left,
+.topbar-center,
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topbar-center {
+  flex: 1;
+  justify-content: center;
+}
+
+.logo {
+  font-weight: 700;
+  color: #fff;
+  font-size: 24px;
+}
+
+.icon {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.menu {
+  font-size: 24px;
+}
+
+.search {
+  height: 36px;
+  border-radius: 18px;
+  padding: 8px 16px;
+  border: none;
+  max-width: 420px;
+  width: 50%;
+  font-size: 16px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}

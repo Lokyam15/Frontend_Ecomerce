@@ -621,15 +621,29 @@
 }
 
 .dashboard-welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 80px 40px;
+
+  padding: 80px 60px;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   max-width: 600px;
+
+  /* Centramos el contenedor principal */
   margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   box-sizing: border-box;
 }
+
+
 
 .dashboard-welcome h2 {
   font-size: 32px;

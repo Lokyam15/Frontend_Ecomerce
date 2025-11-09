@@ -16,8 +16,14 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   max-width: 1200px;
-  margin: 0 auto 20px auto;
+  margin: 40px auto;
   box-sizing: border-box;
+
+  margin: 0 auto;
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .admin-section h2 {

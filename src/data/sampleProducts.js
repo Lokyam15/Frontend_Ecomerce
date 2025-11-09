@@ -1,4 +1,4 @@
-export const sampleProducts = [
+﻿export const sampleProducts = [
   // Poleras - Hombres
   {
     id: 1,
@@ -8,9 +8,9 @@ export const sampleProducts = [
     colors: ["negro", "blanco", "gris", "azul marino"],
     sizes: ["S", "M", "L", "XL", "XXL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Polera+Hombre+1",
-      "https://via.placeholder.com/400x500?text=Polera+Hombre+2",
-      "https://via.placeholder.com/400x500?text=Polera+Hombre+3"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Poleras",
     gender: "hombre",
@@ -24,8 +24,8 @@ export const sampleProducts = [
     colors: ["negro", "azul", "gris"],
     sizes: ["S", "M", "L", "XL", "XXL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Polera+Deportiva+H+1",
-      "https://via.placeholder.com/400x500?text=Polera+Deportiva+H+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Poleras",
     gender: "hombre",
@@ -39,8 +39,8 @@ export const sampleProducts = [
     colors: ["blanco", "negro", "azul"],
     sizes: ["S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Polera+Estampada+H+1",
-      "https://via.placeholder.com/400x500?text=Polera+Estampada+H+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Poleras",
     gender: "hombre",
@@ -56,8 +56,8 @@ export const sampleProducts = [
     colors: ["rosa", "blanco", "negro", "lila"],
     sizes: ["XS", "S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Polera+Mujer+1",
-      "https://via.placeholder.com/400x500?text=Polera+Mujer+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Poleras",
     gender: "mujer",
@@ -71,8 +71,8 @@ export const sampleProducts = [
     colors: ["negro", "blanco", "beige"],
     sizes: ["XS", "S", "M", "L"],
     images: [
-      "https://via.placeholder.com/400x500?text=Polera+Premium+M+1",
-      "https://via.placeholder.com/400x500?text=Polera+Premium+M+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Poleras",
     gender: "mujer",
@@ -88,8 +88,8 @@ export const sampleProducts = [
     colors: ["azul", "rosa", "blanco"],
     sizes: ["XS", "S", "M", "L"],
     images: [
-      "https://via.placeholder.com/400x500?text=Blusa+Floral+1",
-      "https://via.placeholder.com/400x500?text=Blusa+Floral+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Blusas",
     gender: "mujer",
@@ -103,8 +103,8 @@ export const sampleProducts = [
     colors: ["negro", "blanco", "beige"],
     sizes: ["XS", "S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Blusa+Elegante+1",
-      "https://via.placeholder.com/400x500?text=Blusa+Elegante+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Blusas",
     gender: "mujer",
@@ -118,8 +118,8 @@ export const sampleProducts = [
     colors: ["rosa", "azul cielo", "menta"],
     sizes: ["S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Blusa+Casual+1",
-      "https://via.placeholder.com/400x500?text=Blusa+Casual+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Blusas",
     gender: "mujer",
@@ -133,8 +133,8 @@ export const sampleProducts = [
     colors: ["azul marino", "rojo"],
     sizes: ["XS", "S", "M", "L"],
     images: [
-      "https://via.placeholder.com/400x500?text=Blusa+Rayas+1",
-      "https://via.placeholder.com/400x500?text=Blusa+Rayas+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Blusas",
     gender: "mujer",
@@ -148,8 +148,8 @@ export const sampleProducts = [
     colors: ["blanco", "negro", "nude"],
     sizes: ["XS", "S", "M", "L"],
     images: [
-      "https://via.placeholder.com/400x500?text=Blusa+Encaje+1",
-      "https://via.placeholder.com/400x500?text=Blusa+Encaje+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Blusas",
     gender: "mujer",
@@ -165,8 +165,8 @@ export const sampleProducts = [
     colors: ["negro", "azul marino", "gris"],
     sizes: ["XS", "S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Falda+Midi+1",
-      "https://via.placeholder.com/400x500?text=Falda+Midi+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Faldas",
     gender: "mujer",
@@ -180,8 +180,8 @@ export const sampleProducts = [
     colors: ["azul", "negro"],
     sizes: ["XS", "S", "M", "L"],
     images: [
-      "https://via.placeholder.com/400x500?text=Falda+Mezclilla+1",
-      "https://via.placeholder.com/400x500?text=Falda+Mezclilla+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Faldas",
     gender: "mujer",
@@ -195,8 +195,8 @@ export const sampleProducts = [
     colors: ["floral", "tribal"],
     sizes: ["S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Falda+Bohemia+1",
-      "https://via.placeholder.com/400x500?text=Falda+Bohemia+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Faldas",
     gender: "mujer",
@@ -210,8 +210,8 @@ export const sampleProducts = [
     colors: ["negro", "gris", "beige"],
     sizes: ["XS", "S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Falda+Lapiz+1",
-      "https://via.placeholder.com/400x500?text=Falda+Lapiz+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Faldas",
     gender: "mujer",
@@ -225,8 +225,8 @@ export const sampleProducts = [
     colors: ["rojo", "negro", "verde"],
     sizes: ["S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Falda+Campana+1",
-      "https://via.placeholder.com/400x500?text=Falda+Campana+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Faldas",
     gender: "mujer",
@@ -242,8 +242,8 @@ export const sampleProducts = [
     colors: ["azul", "negro", "gris"],
     sizes: ["30", "32", "34", "36", "38"],
     images: [
-      "https://via.placeholder.com/400x500?text=Jeans+Hombre+1",
-      "https://via.placeholder.com/400x500?text=Jeans+Hombre+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Pantalones",
     gender: "hombre",
@@ -257,8 +257,8 @@ export const sampleProducts = [
     colors: ["negro", "gris oscuro", "azul marino"],
     sizes: ["30", "32", "34", "36", "38"],
     images: [
-      "https://via.placeholder.com/400x500?text=Pantalon+Vestir+H+1",
-      "https://via.placeholder.com/400x500?text=Pantalon+Vestir+H+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Pantalones",
     gender: "hombre",
@@ -272,8 +272,8 @@ export const sampleProducts = [
     colors: ["verde militar", "beige", "negro"],
     sizes: ["30", "32", "34", "36", "38"],
     images: [
-      "https://via.placeholder.com/400x500?text=Cargo+H+1",
-      "https://via.placeholder.com/400x500?text=Cargo+H+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Pantalones",
     gender: "hombre",
@@ -289,8 +289,8 @@ export const sampleProducts = [
     colors: ["azul", "negro", "gris"],
     sizes: ["26", "28", "30", "32", "34"],
     images: [
-      "https://via.placeholder.com/400x500?text=Jeans+Mujer+1",
-      "https://via.placeholder.com/400x500?text=Jeans+Mujer+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Pantalones",
     gender: "mujer",
@@ -304,8 +304,8 @@ export const sampleProducts = [
     colors: ["negro", "beige", "azul marino"],
     sizes: ["XS", "S", "M", "L", "XL"],
     images: [
-      "https://via.placeholder.com/400x500?text=Pantalon+Vestir+M+1",
-      "https://via.placeholder.com/400x500?text=Pantalon+Vestir+M+2"
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto",
+      "https://placehold.co/400x500/e0e0e0/666?text=Producto"
     ],
     category: "Pantalones",
     gender: "mujer",

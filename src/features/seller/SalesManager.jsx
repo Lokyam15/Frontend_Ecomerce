@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../admin/AdminStyles.css';
 import './SalesManager.css';
 
 export default function SalesManager() {
@@ -61,10 +62,10 @@ export default function SalesManager() {
   };
 
   return (
-    <div className="sales-manager">
+    <div className="admin-section">
+      <h2>Registro de Ventas</h2>
+      
       <div className="sale-form">
-        <h2>Nueva Venta</h2>
-        
         <div className="input-group">
           <input
             type="text"

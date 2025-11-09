@@ -7,6 +7,9 @@ import Inventory from '../../features/admin/Inventory'
 import Sales from '../../features/admin/Sales'
 import CategoryManager from '../../features/admin/CategoryManager'
 import StockManager from '../../features/admin/StockManager'
+import AIReports from '../../features/admin/AIReports'
+import SalesForecast from '../../features/admin/SalesForecast'
+import ProductManager from '../../features/admin/ProductManager'
 
 import Header from '../../components/common/Header';
 import SalesManager from '../seller/SalesManager';
@@ -56,13 +59,17 @@ export default function HomePage() {
                     onClick={() => setActiveSection('inventory')}
                   >📦 Inventario</button>
                   <button 
+                    className={`admin-menu-item ${activeSection === 'products' ? 'active' : ''}`}
+                    onClick={() => setActiveSection('products')}
+                  >🛍️ Gestionar Productos</button>
+                  <button 
                     className={`admin-menu-item ${activeSection === 'users' ? 'active' : ''}`}
                     onClick={() => setActiveSection('users')}
                   >👥 Gestionar Usuarios</button>
                   <button 
                     className={`admin-menu-item ${activeSection === 'roles' ? 'active' : ''}`}
                     onClick={() => setActiveSection('roles')}
-                  >🔑 Asignar Roles</button>
+                  >🔑 Gestionar Roles</button>
                   <button 
                     className={`admin-menu-item ${activeSection === 'categories' ? 'active' : ''}`}
                     onClick={() => setActiveSection('categories')}
@@ -71,6 +78,14 @@ export default function HomePage() {
                     className={`admin-menu-item ${activeSection === 'stock' ? 'active' : ''}`}
                     onClick={() => setActiveSection('stock')}
                   >📦 Gestionar Stock</button>
+                  <button 
+                    className={`admin-menu-item ${activeSection === 'aireports' ? 'active' : ''}`}
+                    onClick={() => setActiveSection('aireports')}
+                  >🤖 Reportes IA</button>
+                  <button 
+                    className={`admin-menu-item ${activeSection === 'forecast' ? 'active' : ''}`}
+                    onClick={() => setActiveSection('forecast')}
+                  >📈 Pronóstico de Ventas</button>
                 </nav>
               </aside>
             ) : (
@@ -94,10 +109,13 @@ export default function HomePage() {
                 <>
                   {activeSection === 'sales' && <Sales />}
                   {activeSection === 'inventory' && <Inventory />}
+                  {activeSection === 'products' && <ProductManager />}
                   {activeSection === 'users' && <UserManager />}
                   {activeSection === 'roles' && <RoleManager />}
                   {activeSection === 'categories' && <CategoryManager />}
                   {activeSection === 'stock' && <StockManager />}
+                  {activeSection === 'aireports' && <AIReports />}
+                  {activeSection === 'forecast' && <SalesForecast />}
                 </>
               )}
               {/* Seller components */}

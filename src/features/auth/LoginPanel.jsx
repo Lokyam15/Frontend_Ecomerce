@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './LoginPanel.css';
 import { USERS } from '../../config/constants';
 
-export default function LoginPanel({ isOpen, onClose, onLogin }) {
+export default function LoginPanel({ onClose, onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -14,6 +14,7 @@ export default function LoginPanel({ isOpen, onClose, onLogin }) {
     if (username === admin.username && password === admin.password) {
       onLogin({ 
         username, 
+        name: admin.username,
         role: 'admin',
         permissions: ['manage_sales', 'manage_stock', 'manage_users', 'assign_roles']
       });
@@ -21,6 +22,7 @@ export default function LoginPanel({ isOpen, onClose, onLogin }) {
     } else if (username === seller.username && password === seller.password) {
       onLogin({
         username,
+        name: seller.username,
         role: 'seller',
         permissions: seller.permissions
       });
@@ -30,10 +32,10 @@ export default function LoginPanel({ isOpen, onClose, onLogin }) {
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="login-overlay">
+    <div className="login-overlay" onClick={(e) => {
+      if (e.target === e.currentTarget) onClose();
+    }}>
       <div className="login-panel">
         <button className="close-button" onClick={onClose}>×</button>
         <h2>Iniciar Sesión</h2>

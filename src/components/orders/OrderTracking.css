@@ -1,0 +1,503 @@
+/* Overlay y Modal Principal */
+.order-tracking-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.order-tracking-modal {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Header */
+.order-tracking-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-tracking-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Content */
+.order-tracking-content {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Loading */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  font-size: 18px;
+  color: #667eea;
+}
+
+/* No Orders */
+.no-orders {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.no-orders p:first-child {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.no-orders-subtitle {
+  color: #666;
+  font-size: 16px;
+}
+
+/* Orders List */
+.orders-list {
+  display: grid;
+  gap: 20px;
+}
+
+/* Order Card */
+.order-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-card-header h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.order-date {
+  color: #666;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-paid {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-shipped {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.status-cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status-unknown {
+  background: #e2e3e5;
+  color: #383d41;
+}
+
+/* Order Card Body */
+.order-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.order-summary p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.order-summary strong {
+  color: #333;
+}
+
+/* Order Actions */
+.order-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-view-details,
+.btn-retry-payment {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-view-details {
+  background: #667eea;
+  color: white;
+}
+
+.btn-view-details:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+}
+
+.btn-retry-payment {
+  background: #28a745;
+  color: white;
+}
+
+.btn-retry-payment:hover {
+  background: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+/* Order Detail Modal */
+.order-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.order-detail-modal {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: slideUp 0.3s ease-out;
+}
+
+.order-detail-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-detail-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.order-detail-content {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Tracking Timeline */
+.tracking-timeline {
+  margin-bottom: 30px;
+}
+
+.tracking-timeline h4 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e0e0e0;
+}
+
+.timeline-step {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -34px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #999;
+}
+
+.timeline-step.completed .timeline-marker {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;
+}
+
+.timeline-content h5 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.timeline-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+}
+
+.timeline-step.pending .timeline-content h5,
+.timeline-step.pending .timeline-content p {
+  color: #999;
+}
+
+/* Order Items Detail */
+.order-items-detail {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.order-items-detail h4 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.items-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+}
+
+.item-info strong {
+  display: block;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.item-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.item-price {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 16px;
+}
+
+.order-total-detail {
+  text-align: right;
+  padding-top: 12px;
+  border-top: 2px solid #e0e0e0;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Payment Info Detail */
+.payment-info-detail {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.payment-info-detail h4 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.payment-info-detail p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.payment-info-detail strong {
+  color: #333;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .order-tracking-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .order-tracking-header {
+    padding: 16px;
+  }
+
+  .order-tracking-header h2 {
+    font-size: 20px;
+  }
+
+  .order-tracking-content {
+    padding: 16px;
+  }
+
+  .order-card {
+    padding: 16px;
+  }
+
+  .order-card-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .order-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .btn-view-details,
+  .btn-retry-payment {
+    width: 100%;
+  }
+
+  .order-detail-modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .order-detail-content {
+    padding: 16px;
+  }
+
+  .timeline {
+    padding-left: 30px;
+  }
+
+  .timeline-marker {
+    left: -28px;
+    width: 22px;
+    height: 22px;
+  }
+}

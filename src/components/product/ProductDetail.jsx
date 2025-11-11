@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ProductDetail.css';
 
-export default function ProductDetail({ product, onClose, onAddToCart }) {
+export default function ProductDetail({ product, onClose, onAddToCart, user, onLoginRequired, onGoToCheckout }) {
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
@@ -19,6 +19,29 @@ export default function ProductDetail({ product, onClose, onAddToCart }) {
       selectedSize,
       quantity
     });
+  };
+
+  const handleBuyNow = () => {
+    if (!selectedColor || !selectedSize) {
+      alert('Por favor selecciona color y talla');
+      return;
+    }
+
+    if (!user) {
+      // Si no está logueado, cerrar modal y abrir login
+      onClose();
+      onLoginRequired();
+    } else {
+      // Si está logueado, agregar al carrito e ir directamente al checkout
+      onAddToCart({
+        ...product,
+        selectedColor,
+        selectedSize,
+        quantity
+      });
+      onClose();
+      onGoToCheckout();
+    }
   };
 
   const COLOR_CLASSES = {
@@ -128,8 +151,11 @@ export default function ProductDetail({ product, onClose, onAddToCart }) {
               >
                 Añadir al Carrito
               </button>
-              <button className="buy-now-button">
-                Comprar Ahora
+              <button 
+                className="buy-now-button"
+                onClick={handleBuyNow}
+              >
+                {!user ? '🔒 Iniciar Sesión para Comprar' : '💳 Comprar Ahora'}
               </button>
             </div>
           </div>

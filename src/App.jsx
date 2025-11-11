@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { FiMenu, FiShoppingBag, FiUser, FiSearch, FiX } from 'react-icons/fi';
 import LoginPanel from './features/auth/LoginPanel';
 import ProductDetail from './components/product/ProductDetail';
+import Checkout from './components/checkout/Checkout';
+import OrderTracking from './components/orders/OrderTracking';
 import ProductManager from './features/admin/ProductManager';
 import ProductManagerConnected from './features/admin/ProductManagerConnected';
 import SalesManager from './features/seller/SalesManager';
@@ -21,6 +23,8 @@ import './App.css';
 function App() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isOrderTrackingOpen, setIsOrderTrackingOpen] = useState(false);
   const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -41,8 +45,8 @@ function App() {
   const handleLogin = (userData) => {
     setUser(userData);
     setIsLoginOpen(false);
-    // No establecer ningún módulo por defecto, dejar null para mostrar bienvenida
-    setActiveModule(null);
+    // Mantener al usuario en la página actual (productos) sin cambiar de vista
+    // No establecer activeModule para que siga viendo los productos
   };
 
   const handleLogout = () => {
@@ -59,6 +63,33 @@ function App() {
 
   const handleRemoveFromCart = (cartId) => {
     setCart(prevCart => prevCart.filter(item => item.cartId !== cartId));
+  };
+
+  const handleGoToCheckout = () => {
+    if (!user) {
+      setIsCartOpen(false);
+      setIsLoginOpen(true);
+    } else {
+      setIsCartOpen(false);
+      setIsCheckoutOpen(true);
+    }
+  };
+
+  const handleConfirmOrder = async (orderData) => {
+    try {
+      console.log('Enviando pedido al backend:', orderData);
+      // Importar el servicio si no está ya importado
+      const orderService = (await import('./services/orderService')).default;
+      const result = await orderService.createOrder(orderData);
+      console.log('Pedido creado exitosamente:', result);
+      // Limpiar el carrito
+      setCart([]);
+      setIsCheckoutOpen(false);
+      return result;
+    } catch (error) {
+      console.error('Error al crear el pedido:', error);
+      throw error;
+    }
   };
 
   const handleSearch = () => {
@@ -173,7 +204,8 @@ function App() {
           >
             <FiUser />
           </button>
-          {!user && (
+          {/* Mostrar carrito solo para clientes (no admin/seller) */}
+          {(!user || (user && user.role !== 'admin' && user.role !== 'seller')) && (
             <button 
               className="icon cart-button"
               onClick={() => setIsCartOpen(!isCartOpen)}
@@ -224,6 +256,14 @@ function App() {
                     <strong>Total:</strong>
                     <strong>${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}</strong>
                   </div>
+                  <div className="cart-actions">
+                    <button 
+                      className="checkout-button"
+                      onClick={handleGoToCheckout}
+                    >
+                      {!user ? '🔒 Iniciar Sesión para Pagar' : '💳 Ir a Pagar'}
+                    </button>
+                  </div>
                 </>
               )}
             </div>
@@ -236,22 +276,77 @@ function App() {
         <div className={`side-menu ${isSideMenuOpen ? 'open' : ''}`}>
           <div className="side-menu-header">
             <h3>{user.name}</h3>
-            <span className="user-role">{user.role === 'admin' ? 'Administrador' : 'Vendedor'}</span>
+            <span className="user-role">
+              {user.role === 'admin' ? '👑 Administrador' : 
+               user.role === 'seller' ? '👤 Vendedor' : 
+               '🛍️ Cliente'}
+            </span>
           </div>
           <div className="side-menu-items">
-            {(user.role === 'admin' ? adminModules : sellerModules).map(module => (
-              <button
-                key={module.id}
-                className={`menu-item ${activeModule === module.id ? 'active' : ''}`}
-                onClick={() => {
-                  setActiveModule(module.id);
-                  setIsSideMenuOpen(false);
-                }}
-              >
-                <span className="menu-icon">{module.icon}</span>
-                <span>{module.name}</span>
-              </button>
-            ))}
+            {/* Menú para Admin y Vendedor */}
+            {(user.role === 'admin' || user.role === 'seller') ? (
+              <>
+                {(user.role === 'admin' ? adminModules : sellerModules).map(module => (
+                  <button
+                    key={module.id}
+                    className={`menu-item ${activeModule === module.id ? 'active' : ''}`}
+                    onClick={() => {
+                      setActiveModule(module.id);
+                      setIsSideMenuOpen(false);
+                    }}
+                  >
+                    <span className="menu-icon">{module.icon}</span>
+                    <span>{module.name}</span>
+                  </button>
+                ))}
+              </>
+            ) : (
+              /* Menú para Cliente */
+              <>
+                <button 
+                  className="menu-item"
+                  onClick={() => {
+                    setActiveModule(null);
+                    setIsSideMenuOpen(false);
+                  }}
+                >
+                  <span className="menu-icon">🏠</span>
+                  <span>Inicio / Productos</span>
+                </button>
+                <button 
+                  className="menu-item"
+                  onClick={() => {
+                    setIsCartOpen(true);
+                    setIsSideMenuOpen(false);
+                  }}
+                >
+                  <span className="menu-icon">🛒</span>
+                  <span>Mi Carrito {cart.length > 0 && `(${cart.length})`}</span>
+                </button>
+                <button 
+                  className="menu-item"
+                  onClick={() => {
+                    setIsOrderTrackingOpen(true);
+                    setIsSideMenuOpen(false);
+                  }}
+                >
+                  <span className="menu-icon">📦</span>
+                  <span>Mis Pedidos</span>
+                </button>
+                <button 
+                  className="menu-item"
+                  onClick={() => {
+                    alert('Perfil de usuario próximamente');
+                    setIsSideMenuOpen(false);
+                  }}
+                >
+                  <span className="menu-icon">👤</span>
+                  <span>Mi Perfil</span>
+                </button>
+              </>
+            )}
+            
+            {/* Cerrar sesión para todos */}
             <button className="menu-item logout" onClick={handleLogout}>
               <span className="menu-icon">🚪</span>
               <span>Cerrar Sesión</span>
@@ -261,11 +356,13 @@ function App() {
       )}
 
       <main className="main-content">
-        {user ? (
+        {user && (user.role === 'admin' || user.role === 'seller') ? (
+          /* Dashboard para Admin y Vendedor */
           <div className="admin-dashboard">
             {renderModule()}
           </div>
         ) : (
+          /* Página de productos para clientes no logueados o clientes logueados */
           <>
             <aside className="sidebar">
               <h3>Filtros</h3>
@@ -338,6 +435,14 @@ function App() {
             </aside>
 
             <div className="product-area">
+              {/* Mensaje de bienvenida para clientes logueados */}
+              {user && user.role !== 'admin' && user.role !== 'seller' && (
+                <div className="client-welcome-banner">
+                  <h2>¡Hola, {user.name}! 👋</h2>
+                  <p>Explora nuestra colección y encuentra tu estilo perfecto</p>
+                </div>
+              )}
+
               {/* Pestañas de género */}
               <div className="gender-tabs">
                 <button 
@@ -496,6 +601,25 @@ function App() {
                 product={selectedProduct}
                 onClose={() => setSelectedProduct(null)}
                 onAddToCart={handleAddToCart}
+                user={user}
+                onLoginRequired={() => setIsLoginOpen(true)}
+                onGoToCheckout={handleGoToCheckout}
+              />
+            )}
+
+            {isCheckoutOpen && (
+              <Checkout
+                cart={cart}
+                user={user}
+                onClose={() => setIsCheckoutOpen(false)}
+                onConfirmOrder={handleConfirmOrder}
+              />
+            )}
+
+            {isOrderTrackingOpen && (
+              <OrderTracking
+                user={user}
+                onClose={() => setIsOrderTrackingOpen(false)}
               />
             )}
           </>

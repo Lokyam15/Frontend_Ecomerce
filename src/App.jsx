@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiMenu, FiShoppingBag, FiUser, FiSearch, FiX } from 'react-icons/fi';
 import LoginPanel from './features/auth/LoginPanel';
 import ProductDetail from './components/product/ProductDetail';
 import ProductManager from './features/admin/ProductManager';
+import ProductManagerConnected from './features/admin/ProductManagerConnected';
 import SalesManager from './features/seller/SalesManager';
 import UserManager from './features/admin/UserManager';
 import Inventory from './features/admin/Inventory';
@@ -13,6 +14,7 @@ import RoleManager from './features/admin/RoleManager';
 import AIReports from './features/admin/AIReports';
 import SalesForecast from './features/admin/SalesForecast';
 import { sampleProducts } from './data/sampleProducts';
+import authService from './services/authService';
 import './App.css';
 
 function App() {
@@ -27,6 +29,14 @@ function App() {
   const [selectedGender, setSelectedGender] = useState('all');
   const [activeModule, setActiveModule] = useState(null);
 
+  // Verificar si hay una sesión guardada al cargar la aplicación
+  useEffect(() => {
+    const currentUser = authService.getCurrentUser();
+    if (currentUser && authService.isAuthenticated()) {
+      setUser(currentUser);
+    }
+  }, []);
+
   const handleLogin = (userData) => {
     setUser(userData);
     setIsLoginOpen(false);
@@ -35,6 +45,7 @@ function App() {
   };
 
   const handleLogout = () => {
+    authService.logout();
     setUser(null);
     setActiveModule(null);
     setIsSideMenuOpen(false);
@@ -91,10 +102,13 @@ function App() {
   ];
 
   const renderModule = () => {
+    console.log('🔴 renderModule llamado con activeModule:', activeModule);
     switch (activeModule) {
       case 'products':
-        return <ProductManager />;
+        console.log('🟢 Renderizando ProductManagerConnected');
+        return <ProductManagerConnected />;
       case 'categories':
+        console.log('🟢 Renderizando CategoryManager');
         return <CategoryManager />;
       case 'inventory':
         return <Inventory />;

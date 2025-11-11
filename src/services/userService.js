@@ -156,6 +156,100 @@ const userService = {
       throw error;
     }
   },
+
+  // ==================== GESTIÓN DE USUARIOS DE AUTENTICACIÓN ====================
+  
+  /**
+   * Obtener todos los usuarios del sistema
+   * @param {Object} params - Parámetros de filtrado (role, is_active, search)
+   * @returns {Promise}
+   */
+  getAllUsers: async (params = {}) => {
+    try {
+      const response = await api.get('/auth/users/', { params });
+      return response.data;
+    } catch (error) {
+      console.error('Error obteniendo usuarios:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Obtener un usuario por ID
+   * @param {number} id - ID del usuario
+   * @returns {Promise}
+   */
+  getUserById: async (id) => {
+    try {
+      const response = await api.get(`/auth/users/${id}/`);
+      return response.data;
+    } catch (error) {
+      console.error('Error obteniendo usuario:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Crear un nuevo usuario
+   * @param {Object} userData - Datos del usuario (username, email, password, first_name, last_name, is_staff, is_superuser, persona)
+   * @returns {Promise}
+   */
+  createUser: async (userData) => {
+    try {
+      const response = await api.post('/auth/users/', userData);
+      return response.data;
+    } catch (error) {
+      console.error('Error creando usuario:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Actualizar un usuario existente
+   * @param {number} id - ID del usuario
+   * @param {Object} userData - Datos actualizados del usuario
+   * @returns {Promise}
+   */
+  updateUser: async (id, userData) => {
+    try {
+      const response = await api.put(`/auth/users/${id}/`, userData);
+      return response.data;
+    } catch (error) {
+      console.error('Error actualizando usuario:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Actualizar parcialmente un usuario
+   * @param {number} id - ID del usuario
+   * @param {Object} userData - Datos parciales a actualizar
+   * @returns {Promise}
+   */
+  patchUser: async (id, userData) => {
+    try {
+      const response = await api.patch(`/auth/users/${id}/`, userData);
+      return response.data;
+    } catch (error) {
+      console.error('Error actualizando usuario:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Eliminar un usuario
+   * @param {number} id - ID del usuario
+   * @returns {Promise}
+   */
+  deleteUser: async (id) => {
+    try {
+      const response = await api.delete(`/auth/users/${id}/`);
+      return response.data;
+    } catch (error) {
+      console.error('Error eliminando usuario:', error);
+      throw error;
+    }
+  },
 };
 
 export default userService;

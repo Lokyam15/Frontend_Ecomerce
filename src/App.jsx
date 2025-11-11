@@ -6,6 +6,7 @@ import ProductManager from './features/admin/ProductManager';
 import ProductManagerConnected from './features/admin/ProductManagerConnected';
 import SalesManager from './features/seller/SalesManager';
 import UserManager from './features/admin/UserManager';
+import UserManagerConnected from './features/admin/UserManagerConnected';
 import Inventory from './features/admin/Inventory';
 import Sales from './features/admin/Sales';
 import CategoryManager from './features/admin/CategoryManager';
@@ -119,7 +120,7 @@ function App() {
       case 'forecast':
         return <SalesForecast />;
       case 'users':
-        return <UserManager />;
+        return <UserManagerConnected />;
       case 'roles':
         return <RoleManager />;
       case 'ai-reports':

@@ -103,6 +103,21 @@ const authService = {
       throw error;
     }
   },
+
+  /**
+   * Registrar un nuevo usuario
+   * @param {Object} userData - Datos del nuevo usuario
+   * @returns {Promise} Usuario creado
+   */
+  register: async (userData) => {
+    try {
+      const response = await api.post('/auth/register/', userData);
+      return response.data;
+    } catch (error) {
+      console.error('Error en registro:', error);
+      throw error;
+    }
+  },
 };
 
 export default authService;
